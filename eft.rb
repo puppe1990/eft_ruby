@@ -29,8 +29,16 @@ class EFT
   FINAL_PHRASES = [
     'I am worthy and deserving of [positive emotion or goal].',
     'I am confident and capable of [positive emotion or goal].',
-    'I am open to feeling [positive emotion or goal] in place of this [issue].'
+    'I am open to feeling [positive emotion or goal] in place of this [issue].',
+    'I am grateful for [positive emotion or goal] in my life.',
+    'I am ready to embrace [positive emotion or goal].',
+    'I am filled with [positive emotion or goal].',
+    'I am worthy of feeling [positive emotion or goal].',
+    'I am deserving of [positive emotion or goal].',
+    'I am worthy and deserving of feeling [positive emotion or goal].',
+    'I am open to experiencing [positive emotion or goal] in place of this [issue].'
   ].freeze
+  
 
   def self.ask_feeling
     print 'On a scale from 0 to 10, how do you feel now? '
