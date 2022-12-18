@@ -59,6 +59,7 @@ class EFT
   end
 
   def self.tap(issue, phrases = DEFAULT_PHRASES)
+    start_time = Time.now  # Add this line to store the start time of the session
     feeling = nil
     until feeling == 0
       feeling = ask_feeling
@@ -71,7 +72,13 @@ class EFT
       end
       tap_points(issue, phrases)
     end
+  
+    elapsed_time = Time.now - start_time  # Calculate elapsed time
+    elapsed_minutes = (elapsed_time / 60).floor  # Convert elapsed time to minutes
+    elapsed_seconds = (elapsed_time % 60).round  # Convert remaining seconds to seconds
+    puts "Total time: #{elapsed_minutes}:#{'%02d' % elapsed_seconds}"  # Print elapsed time in MM:SS format
   end
+  
 end
 
 issue = EFT.get_issue
