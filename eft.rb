@@ -32,7 +32,7 @@ class EFT
       break if feeling == 0
 
       TAPPING_POINTS.each do |point|
-        puts "Tap on the #{point} while focusing on the issue: '#{issue}'"
+        puts "Tap on the \e[32m#{point}\e[0m while focusing on the issue: '\e[32m#{issue}\e[0m'"
         puts 'Take a deep breath and tap 5-7 times on each point.'
         puts 'As you tap, repeat one of the following phrases to yourself:'
         phrase = phrases.sample.gsub('[issue]', issue)
@@ -44,6 +44,7 @@ class EFT
 
         print 'Press enter to continue or type "exit" to end the session: '
         input = gets.chomp
+        system('clear')  # This will clear the console
         break if input == 'exit'
       end
     end
