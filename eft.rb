@@ -17,7 +17,13 @@ class EFT
     'Even though I have this [issue], I deeply and completely accept myself.',
     'I am willing to let go of this [issue].',
     'I choose to release this [issue].',
-    'I am free of this [issue].'
+    'I am free of this [issue].',
+    'I am letting go of this [issue].',
+    'I am releasing this [issue].',
+    'I am moving on from this [issue].',
+    'I am leaving this [issue] behind.',
+    'I am no longer held back by this [issue].',
+    'I am stronger than this [issue].'
   ].freeze
 
   FINAL_PHRASES = [
