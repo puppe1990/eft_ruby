@@ -57,9 +57,13 @@ class EFT
 
   def self.tap_points(issue, phrases, final_phrase = nil)
     TAPPING_POINTS.each do |point|
-      puts "Tap on the \e[32m#{point}\e[0m while focusing on the following phrase: '\e[32m#{final_phrase || phrases.sample.gsub('[issue]', issue)}\e[0m'"
+      if final_phrase
+        phrase = final_phrase
+      else
+        phrase = phrases.sample.gsub('[issue]', issue)
+      end
+      puts "Tap on the \e[32m#{point}\e[0m while focusing on the following issue: '\e[32m#{issue}\e[0m'"
       puts 'Take a deep breath and tap 5-7 times on each point.'
-      phrase = phrases.sample.gsub('[issue]', issue)
       if point == 'Karate chop'
         3.times { puts "\e[32m#{phrase}\e[0m" }
       else
@@ -80,7 +84,7 @@ class EFT
       if feeling == 0
         positive_emotion_or_goal = get_positive_emotion_or_goal
         final_phrase = FINAL_PHRASES.sample.gsub('[positive emotion or goal]', positive_emotion_or_goal)
-        tap_points(issue, phrases, final_phrase)
+        tap_points(positive_emotion_or_goal, phrases, final_phrase)
         puts "\e[32m#This is the end!\e[0m"
         break
       end
