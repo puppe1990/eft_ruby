@@ -46,9 +46,9 @@ class EFT
       feeling = ask_feeling
       system('clear') # This will clear the console
       if feeling == 0
-        positive_emotion_or_goal = positive_emotion_or_goal
-        final_phrase = Phrases::FINAL_PHRASES.sample.gsub('[positive emotion or goal]', positive_emotion_or_goal)
-        tap_points(positive_emotion_or_goal, phrases, final_phrase)
+        result = positive_emotion_or_goal
+        final_phrase = Phrases::FINAL_PHRASES.sample.gsub('[positive emotion or goal]', result)
+        tap_points(result, phrases, final_phrase)
         puts "\e[32m#This is the end!\e[0m"
         break
       end
