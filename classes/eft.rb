@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-require_relative 'modules/phrases' 
+require_relative '../modules/phrases'
+
 class EFT
 
   def self.ask_feeling
