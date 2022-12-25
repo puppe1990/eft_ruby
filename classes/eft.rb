@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative '../modules/phrases'
+require 'debug'
 
 class EFT
   def self.ask_feeling
@@ -19,9 +20,9 @@ class EFT
   end
 
   def self.tap_points(issue, phrases, final_phrase = nil, is_custom = false)
-    Phrases::TAPPING_POINTS.each do |point|
+    Phrases::TAPPING_POINTS.each_with_index do |point, index|
       phrase = if is_custom
-                 Phrases::CUSTOM_PHRASES
+                 Phrases::CUSTOM_PHRASES[index]
                else
                  final_phrase || phrases.sample.gsub('[issue]', issue)
                end
@@ -39,7 +40,7 @@ class EFT
     end
   end
 
-  def self.tap(issue, phrases = Phrases::DEFAULT_PHRASES)
+  def self.tap(issue, phrases = Phrases::DEFAULT_PHRASES, is_custom = false)
     start_time = Time.now # Add this line to store the start time of the session
     feeling = nil
     until feeling == 0
@@ -52,7 +53,7 @@ class EFT
         puts "\e[32m#This is the end!\e[0m"
         break
       end
-      tap_points(issue, phrases)
+      tap_points(issue, phrases, nil, is_custom)
     end
 
     elapsed_time = Time.now - start_time # Calculate elapsed time
@@ -60,5 +61,6 @@ class EFT
     elapsed_seconds = (elapsed_time % 60).round  # Convert remaining seconds to seconds
     puts "Total time: #{elapsed_minutes}:#{'%02d' % elapsed_seconds}" # Print elapsed time in MM:SS format
   end
+  
 end
 
