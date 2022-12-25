@@ -66,6 +66,4 @@ class EFT
     elapsed_seconds = (elapsed_time % 60).round  # Convert remaining seconds to seconds
     puts "Total time: #{elapsed_minutes}:#{'%02d' % elapsed_seconds}" # Print elapsed time in MM:SS format
   end
-  
 end
-
