@@ -48,4 +48,4 @@ module Phrases
                     "I don't believe I deserve abundance.",
                     "I'm worried that I'll never be able to afford the things I want.",
                     "I'm always struggling to make ends meet."].freeze
-end 
+end

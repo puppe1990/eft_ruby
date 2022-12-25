@@ -1,8 +1,8 @@
 # frozen_string_literal: true
+
 require_relative '../modules/phrases'
 
 class EFT
-
   def self.ask_feeling
     print 'On a scale from 0 to 10, how do you feel now? '
     gets.to_i
@@ -20,11 +20,11 @@ class EFT
 
   def self.tap_points(issue, phrases, final_phrase = nil, is_custom = false)
     Phrases::TAPPING_POINTS.each do |point|
-      if is_custom
-        phrase = Phrases::CUSTOM_PHRASES
-      else
-        phrase = final_phrase || phrases.sample.gsub('[issue]', issue)
-      end
+      phrase = if is_custom
+                 Phrases::CUSTOM_PHRASES
+               else
+                 final_phrase || phrases.sample.gsub('[issue]', issue)
+               end
       puts "Tap on the \e[32m#{point}\e[0m while focusing on the following issue: '\e[32m#{issue}\e[0m'"
       puts 'Take a deep breath and tap 5-7 times on each point.'
       if point == 'Karate chop'
