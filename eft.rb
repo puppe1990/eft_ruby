@@ -10,6 +10,7 @@ class EFT
     'Under nose',
     'Chin',
     'Collarbone',
+    'Chest',
     'Underarm'
   ].freeze
 
@@ -38,7 +39,17 @@ class EFT
     'I am worthy and deserving of feeling [positive emotion or goal].',
     'I am open to experiencing [positive emotion or goal] in place of this [issue].'
   ].freeze
-  
+
+  CUSTOM_PHRASES = ['Even though I struggle with financial abundance, I deeply and completely accept myself.',
+                    'I have a hard time believing I deserve financial abundance.',
+                    "I feel like I'm not worthy of abundance.",
+                    "I don't know how to attract abundance.",
+                    "I'm scared that I'll never have enough money.",
+                    "I'm always worried about money.",
+                    "I don't trust that I can have abundance.",
+                    "I don't believe I deserve abundance.",
+                    "I'm worried that I'll never be able to afford the things I want.",
+                    "I'm always struggling to make ends meet."]
 
   def self.ask_feeling
     print 'On a scale from 0 to 10, how do you feel now? '
@@ -55,12 +66,12 @@ class EFT
     gets.chomp
   end
 
-  def self.tap_points(issue, phrases, final_phrase = nil)
+  def self.tap_points(issue, phrases, final_phrase = nil, is_custom = false)
     TAPPING_POINTS.each do |point|
-      if final_phrase
-        phrase = final_phrase
+      if is_custom
+        phrase = CUSTOM_PHRASES
       else
-        phrase = phrases.sample.gsub('[issue]', issue)
+        phrase = final_phrase || phrases.sample.gsub('[issue]', issue)
       end
       puts "Tap on the \e[32m#{point}\e[0m while focusing on the following issue: '\e[32m#{issue}\e[0m'"
       puts 'Take a deep breath and tap 5-7 times on each point.'
@@ -77,10 +88,11 @@ class EFT
   end
 
   def self.tap(issue, phrases = DEFAULT_PHRASES)
-    start_time = Time.now  # Add this line to store the start time of the session
+    start_time = Time.now # Add this line to store the start time of the session
     feeling = nil
     until feeling == 0
       feeling = ask_feeling
+      system('clear') # This will clear the console
       if feeling == 0
         positive_emotion_or_goal = get_positive_emotion_or_goal
         final_phrase = FINAL_PHRASES.sample.gsub('[positive emotion or goal]', positive_emotion_or_goal)
@@ -90,14 +102,14 @@ class EFT
       end
       tap_points(issue, phrases)
     end
-  
-    elapsed_time = Time.now - start_time  # Calculate elapsed time
+
+    elapsed_time = Time.now - start_time # Calculate elapsed time
     elapsed_minutes = (elapsed_time / 60).floor  # Convert elapsed time to minutes
     elapsed_seconds = (elapsed_time % 60).round  # Convert remaining seconds to seconds
-    puts "Total time: #{elapsed_minutes}:#{'%02d' % elapsed_seconds}"  # Print elapsed time in MM:SS format
+    puts "Total time: #{elapsed_minutes}:#{'%02d' % elapsed_seconds}" # Print elapsed time in MM:SS format
   end
-  
 end
 
 issue = EFT.get_issue
+system('clear') # This will clear the console
 EFT.tap(issue)
