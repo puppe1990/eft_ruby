@@ -14,27 +14,27 @@ describe EFT do
     end
   end
 
-  describe '.get_positive_emotion_or_goal' do
+  describe '.positive_emotion_or_goal' do
     it 'prompts the user to enter a positive emotion or goal' do
       allow(EFT).to receive(:gets).and_return('happiness')
-      expect { EFT.get_positive_emotion_or_goal }.to output('Enter a positive emotion or goal: ').to_stdout
+      expect { EFT.positive_emotion_or_goal }.to output('Enter a positive emotion or goal: ').to_stdout
     end
 
     it 'returns the user input as a string' do
       allow(EFT).to receive(:gets).and_return('happiness')
-      expect(EFT.get_positive_emotion_or_goal).to eq('happiness')
+      expect(EFT.positive_emotion_or_goal).to eq('happiness')
     end
   end
 
-  describe '.get_issue' do
+  describe '.issue' do
     it 'prompts the user to enter an issue or emotion to focus on' do
       allow(EFT).to receive(:gets).and_return('anxiety')
-      expect { EFT.get_issue }.to output('Enter an issue or emotion to focus on: ').to_stdout
+      expect { EFT.issue }.to output('Enter an issue or emotion to focus on: ').to_stdout
     end
 
     it 'returns the user input as a string' do
       allow(EFT).to receive(:gets).and_return('anxiety')
-      expect(EFT.get_issue).to eq('anxiety')
+      expect(EFT.issue).to eq('anxiety')
     end
   end
 

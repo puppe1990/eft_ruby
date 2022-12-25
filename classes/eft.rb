@@ -8,12 +8,12 @@ class EFT
     gets.to_i
   end
 
-  def self.get_positive_emotion_or_goal
+  def self.positive_emotion_or_goal
     print 'Enter a positive emotion or goal: '
     gets.chomp
   end
 
-  def self.get_issue
+  def self.issue
     print 'Enter an issue or emotion to focus on: '
     gets.chomp
   end
@@ -46,7 +46,7 @@ class EFT
       feeling = ask_feeling
       system('clear') # This will clear the console
       if feeling == 0
-        positive_emotion_or_goal = get_positive_emotion_or_goal
+        positive_emotion_or_goal = positive_emotion_or_goal
         final_phrase = Phrases::FINAL_PHRASES.sample.gsub('[positive emotion or goal]', positive_emotion_or_goal)
         tap_points(positive_emotion_or_goal, phrases, final_phrase)
         puts "\e[32m#This is the end!\e[0m"

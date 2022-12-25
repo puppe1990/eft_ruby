@@ -1,5 +1,5 @@
 require_relative 'classes/eft'
 
-issue = EFT.get_issue
+issue = EFT.issue
 system('clear') # This will clear the console
 EFT.tap(issue)
