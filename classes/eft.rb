@@ -4,6 +4,11 @@ require_relative '../modules/phrases'
 require 'debug'
 
 class EFT
+  def self.ask_route
+    print 'You Want to Tap for a Specific Issue or a custom phrase? (1 or 2) '
+    gets.to_i
+  end
+
   def self.ask_feeling
     print 'On a scale from 0 to 10, how do you feel now? '
     gets.to_i
