@@ -35,15 +35,15 @@ class EFT
       puts 'Take a deep breath and tap 5-7 times on each point.'
       if point == 'Karate chop'
         3.times { puts "\e[32m#{phrase}\e[0m" }
+        sleep 5 if is_custom
       else
         puts "\e[32m#{phrase}\e[0m"
       end
-      print 'Press enter to continue or type "exit" to end the session: '
-      input = gets.chomp
+      sleep 5 # Wait 2 seconds before moving on to the next tap point
       system('clear') # This will clear the console
-      return if input == 'exit'
     end
   end
+  
 
   def self.tap(issue, phrases = Phrases::DEFAULT_PHRASES, is_custom = false)
     start_time = Time.now # Add this line to store the start time of the session
