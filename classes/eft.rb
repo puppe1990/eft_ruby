@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require_relative '../modules/phrases'
-require 'debug'
 
 class EFT
   def self.ask_route
@@ -35,11 +34,11 @@ class EFT
       puts 'Take a deep breath and tap 5-7 times on each point.'
       if point == 'Karate chop'
         3.times { puts "\e[32m#{phrase}\e[0m" }
-        sleep 5 if is_custom
+        sleep 7 if is_custom
       else
         puts "\e[32m#{phrase}\e[0m"
       end
-      sleep 5 # Wait 2 seconds before moving on to the next tap point
+      sleep 4
       system('clear') # This will clear the console
     end
   end
